@@ -1,0 +1,26 @@
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.textLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  font-size: 32px;
+  line-height: 37px;
+  color: #303c42;
+}
+
+.showError {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+  font-size: 12px;
+  line-height: 14px;
+  color: #eb342e;
+}

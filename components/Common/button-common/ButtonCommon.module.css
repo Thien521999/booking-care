@@ -1,0 +1,42 @@
+.btn,
+.btnDisable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box !important;
+  height: 44px;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.btnDisable {
+  opacity: 0.5;
+}
+
+.color {
+  display: inline-block;
+  align-items: center;
+}
+
+.icon {
+  margin-left: 18px;
+}
+
+@media screen and (max-width: 576px) {
+  .btn,
+  .btnDisable {
+    padding: 10px 8px !important;
+    /* height: auto; */
+  }
+
+  .text {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+
+  .icon {
+    margin-left: 10px;
+  }
+}
