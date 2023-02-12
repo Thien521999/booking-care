@@ -60,10 +60,12 @@ export default function App({ Component, pageProps, emotionCache = clientSideEmo
   return (
     <CacheProvider value={emotionCache}>
       <IntlProvider locale={locale} messages={messages} onError={() => null}>
-        <ThemeProvider theme={appTheme}>
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
+        <Layout>
+          <ThemeProvider theme={appTheme}>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </Layout>
       </IntlProvider>
     </CacheProvider>
   );

@@ -79,10 +79,7 @@ export const ButtonCommon = ({
         {label || ''}
       </span>
       {isIconBefore ? (
-        <div className={styles.icon}>
-          A
-          {/* <Image src={iconUp} alt="" width="15px" height="7.5px" /> */}
-        </div>
+        <div className={styles.icon}>A{/* <Image src={iconUp} alt="" width="15px" height="7.5px" /> */}</div>
       ) : (
         ''
       )}

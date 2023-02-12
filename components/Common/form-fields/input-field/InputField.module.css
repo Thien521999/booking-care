@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   flex-flow: column;
-  height: 44px;
+  height: 58.88px;
   position: relative;
 }
 
@@ -14,7 +14,7 @@
   padding: 12px 16px;
   font-family: inherit;
   font-weight: 500;
-  height: 60px;
+  height: 58.88px;
   width: 100%;
   box-sizing: border-box;
   font-style: normal;
@@ -41,5 +41,5 @@
 .wrapper input:-webkit-autofill,
 .wrapper input:-webkit-autofill:hover,
 .wrapper input:-webkit-autofill:focus {
-  height: 44px !important;
+  height: 58.88px !important;
 }
