@@ -39,10 +39,11 @@ export let theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: '0',
-          height: '44px',
+          // height: '44px',
           fontSize: '18px',
           lineHeight: '21px',
           color: '#000000',
+          background: '#fff',
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
             border: '1px solid #C4C4C4',
           },
