@@ -1,13 +1,21 @@
-import { EmptyLayout } from '@components';
+// libs
 import { CacheProvider } from '@emotion/react';
-import locales from '@locales';
-import { AppPropsWithLayout } from '@models';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
-import { createEmotionCache, theme, themeOther } from '@utils';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 import { IntlProvider } from 'react-intl';
+import { Provider } from 'react-redux';
+// components
+import { EmptyLayout } from '@components';
+// locales
+import locales from '@locales';
+// models
+import { AppPropsWithLayout } from '@models';
+// store
+import store from 'app/store';
+// utils
+import { createEmotionCache, theme, themeOther } from '@utils';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -59,14 +67,16 @@ export default function App({ Component, pageProps, emotionCache = clientSideEmo
   const Layout = Component.Layout ?? EmptyLayout;
   return (
     <CacheProvider value={emotionCache}>
-      <IntlProvider locale={locale} messages={messages} onError={() => null}>
-        <Layout>
-          <ThemeProvider theme={appTheme}>
-            <CssBaseline />
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </Layout>
-      </IntlProvider>
+      <Provider store={store}>
+        <IntlProvider locale={locale} messages={messages} onError={() => null}>
+          <Layout>
+            <ThemeProvider theme={appTheme}>
+              <CssBaseline />
+              <Component {...pageProps} />
+            </ThemeProvider>
+          </Layout>
+        </IntlProvider>
+      </Provider>
     </CacheProvider>
   );
 }

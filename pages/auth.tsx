@@ -1,10 +1,10 @@
 // components
 import { AuthLayout, Login } from '@components';
 // hooks
-// import { useAuthentication } from '@hooks';
+import { useAuthentication } from '@hooks';
 
 const LoginPage = () => {
-  // useAuthentication();
+  useAuthentication();
 
   return (
     <>

@@ -1,23 +1,41 @@
 // libs
 import { Container } from '@mui/material';
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useRouter } from 'next/router';
 // components
 import { LoginForm } from '@components';
 // api
 import { controllApi } from '@api';
+// hooks
+import { useAppDispatch } from 'app/hooks';
 // models
 import { payloadLogin } from '@models';
+// constants
+import { StoreKeys } from '@constants';
+// slice
+import { addUserCurrent } from 'redux/slice/authSlice';
 // other
 import styles from './Login.module.css';
 
 export const Login = () => {
-  const [error, setError] = useState('');
+  const router = useRouter();
+  const dispatch = useAppDispatch();
   
+  const [error, setError] = useState('');
+
   const handleSubmitLogin = async (values: payloadLogin) => {
     try {
       const data: any = await controllApi.postLogin(values);
-      setError(data.message);
+      if (data && data.errCode === 1) {
+        setError(data.message);
+      } else if (data && data.errCode === 0) {
+        localStorage.setItem(StoreKeys.TOKEN, JSON.stringify(data.user));
+
+        const action = addUserCurrent(data.user);
+        dispatch(action);
+        
+        router.push('/');
+      }
     } catch (error: any) {
       console.log('error', error);
       setError(error.message);
