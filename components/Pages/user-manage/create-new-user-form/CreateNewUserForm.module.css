@@ -1,0 +1,30 @@
+.title {
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 15px;
+
+  margin-bottom: 16px;
+}
+
+.groupButton {
+  position: relative;
+  margin: 16px 0 32px 0;
+}
+
+.btn {
+  position: absolute;
+  right: 0;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 10px;
+
+  width: 50%;
+}

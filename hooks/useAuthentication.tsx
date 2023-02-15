@@ -1,8 +1,6 @@
 // libs
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
-// constants
-import { StoreKeys } from '@constants';
 // hooks
 import { useToken } from './useToken';
 
@@ -12,7 +10,7 @@ export const useAuthentication = () => {
 
   useEffect(() => {
     if (token) {
-      router.push('/');
+      router.push('/user-manage');
     }
   }, [token, router]);
   return <></>;

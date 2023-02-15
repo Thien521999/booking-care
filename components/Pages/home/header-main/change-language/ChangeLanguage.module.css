@@ -1,0 +1,114 @@
+.changeLanguageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.changeLanguageWrapper a {
+  text-decoration: none;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: auto;
+  max-width: 1180px;
+  width: 100%;
+}
+
+.iconLabelHeaderWhite {
+  width: 194px;
+}
+
+.textOverland {
+  font-size: 10px;
+  line-height: 15px;
+  color: #9da5ae;
+}
+
+.active,
+.activeNull {
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: 900;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.active {
+  color: #78c147;
+}
+
+.activeNull {
+  color: #9da5ae;
+}
+
+/* res */
+@media screen and (min-width: 992px) {
+  .iconLabelHeaderWhite {
+    position: relative;
+    right: 60px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .footerList {
+    display: flex;
+    flex-flow: 'row nowrap';
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 20px 2px 0;
+  }
+
+  .iconLabelHeaderWhite {
+    margin: 6px;
+    width: 224px;
+  }
+
+  .locale {
+    display: none;
+  }
+
+  .textOverland {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .locale {
+    display: none;
+  }
+
+  .item {
+    padding: 8px 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .iconLabelHeaderWhite {
+    margin: 0;
+    width: 194px;
+  }
+
+  .textOverland {
+    margin-top: 14px;
+  }
+}

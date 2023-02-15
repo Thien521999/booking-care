@@ -7,11 +7,12 @@ import { Box, Stack } from '@mui/material';
 import { LayoutProps } from '@models';
 // others
 import styles from './Main.module.css';
+import { HeaderMain } from '@components';
 
 export const MainLayout = ({ children }: LayoutProps) => {
   return (
     <Stack minHeight="100vh">
-      {/* <Header /> */}
+      <HeaderMain />
       <Box component="main" flexGrow={1} className={styles.main}>
         {children}
       </Box>
