@@ -11,16 +11,17 @@ interface InputFieldProps {
   placeholder?: string;
   errors?: any;
   onclick?: (value: any) => void;
+  isDisable?: boolean;
 }
 
-export const InputField = ({ control, name, width, placeholder, errors, onclick }: InputFieldProps) => {
+export const InputField = ({ control, name, width, placeholder, errors, onclick, isDisable }: InputFieldProps) => {
   return (
     <Controller
       name={name}
       control={control}
       render={({ field }) => (
         <div className={styles.wrapper} style={{ width: `${width}` }}>
-          <input {...field} type="text" name={name} placeholder={placeholder} onClick={onclick}/>
+          <input {...field} type="text" name={name} placeholder={placeholder} onClick={onclick} disabled={isDisable}/>
           <div className={styles.error}>{ errors && errors[name]?.message}</div>
         </div>
       )}

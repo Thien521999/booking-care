@@ -4,7 +4,7 @@ import axios from 'axios';
 import { StoreKeys } from 'constants/common';
 
 const axiosClient = axios.create({
-  baseURL: ``,
+  baseURL: `/api/`,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
   },

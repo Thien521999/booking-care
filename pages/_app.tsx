@@ -13,9 +13,11 @@ import locales from '@locales';
 // models
 import { AppPropsWithLayout } from '@models';
 // store
-import store from 'app/store';
+import store, { persistor } from 'app/store';
 // utils
 import { createEmotionCache, theme, themeOther } from '@utils';
+import { PersistGate } from 'redux-persist/integration/react';
+import Head from 'next/head';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -53,7 +55,7 @@ export default function App({ Component, pageProps, emotionCache = clientSideEmo
     switch (locale) {
       case 'en':
         return locales['en'];
-      case 'tc':
+      case 'vi':
         return locales['vi'];
       default:
         return locales['en'];
@@ -61,21 +63,38 @@ export default function App({ Component, pageProps, emotionCache = clientSideEmo
   }, [locale]);
 
   useEffect(() => {
-    setAppTheme(locale.toLowerCase() == 'tc' ? themeOther : theme);
+    setAppTheme(locale.toLowerCase() == 'en' ? themeOther : theme);
   }, [locale]);
 
   const Layout = Component.Layout ?? EmptyLayout;
   return (
     <CacheProvider value={emotionCache}>
       <Provider store={store}>
-        <IntlProvider locale={locale} messages={messages} onError={() => null}>
-          <Layout>
-            <ThemeProvider theme={appTheme}>
-              <CssBaseline />
-              <Component {...pageProps} />
-            </ThemeProvider>
-          </Layout>
-        </IntlProvider>
+        <PersistGate loading={null} persistor={persistor}>
+          <IntlProvider locale={locale} messages={messages} onError={() => null}>
+            <Layout>
+              <Head>
+                <title>{title}</title>
+                <meta name="viewport" content="initial-scale=1, width=device-width" />
+                <link
+                  rel="stylesheet"
+                  type="text/css"
+                  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+                />
+                <link
+                  rel="stylesheet"
+                  type="text/css"
+                  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+                />
+              </Head>
+
+              <ThemeProvider theme={appTheme}>
+                <CssBaseline />
+                <Component {...pageProps} />
+              </ThemeProvider>
+            </Layout>
+          </IntlProvider>
+        </PersistGate>
       </Provider>
     </CacheProvider>
   );

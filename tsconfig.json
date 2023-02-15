@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -16,16 +20,51 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@utils": ["utils", "utils/*"],
-      "@models": ["models", "models/*"],
-      "@hooks": ["hooks", "hooks/*"],
-      "@constants": ["constants", "constants/*"],
-      "@locales": ["locales", "locales/*"],
-      "@components": ["components", "components/*"],
-      "@public/*": ["public/*"],
-      "@api": ["api", "api/*"]
-    }
+      "@utils": [
+        "utils",
+        "utils/*"
+      ],
+      "@models": [
+        "models",
+        "models/*"
+      ],
+      "@hooks": [
+        "hooks",
+        "hooks/*"
+      ],
+      "@constants": [
+        "constants",
+        "constants/*"
+      ],
+      "@locales": [
+        "locales",
+        "locales/*"
+      ],
+      "@components": [
+        "components",
+        "components/*"
+      ],
+      "@public/*": [
+        "public/*"
+      ],
+      "@api": [
+        "api",
+        "api/*"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

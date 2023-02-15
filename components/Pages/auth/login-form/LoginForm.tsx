@@ -71,14 +71,14 @@ export const LoginForm = ({ onSubmit, error }: LoginFormProps) => {
         sx={{ display: 'grid', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridGap: '24px', width: '100%' }}
       >
         <InputField name="email" control={control} width="100%" placeholder={lang === 'en' ? 'Email' : '員工證'} />
-          <PasswordField
-            name="password"
-            errors={errors}
-            control={control}
-            width="100%"
-            placeholder={lang === 'en' ? 'Password' : '密碼'}
-          />
-          {error && <div className={styles.showError}>{error}</div>}
+        <PasswordField
+          name="password"
+          errors={errors}
+          control={control}
+          width="100%"
+          placeholder={lang === 'en' ? 'Password' : '密碼'}
+        />
+        {error && <div className={styles.showError}>{error}</div>}
         <ButtonCommon
           label={<FormattedMessage id={'Login'} defaultMessage={'Login'} />}
           width="100%"
@@ -93,7 +93,9 @@ export const LoginForm = ({ onSubmit, error }: LoginFormProps) => {
           type="submit"
         />
       </Box>
-      <div className={styles.textForget}>Forgot password?</div>
+      <div className={styles.textForget}>
+        <FormattedMessage id={'Forgot password?'} defaultMessage={'Forgot password?'} />
+      </div>
       <div>Or Login With</div>
       <div className={styles.icons}>
         <GoogleIcon />

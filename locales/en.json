@@ -1,3 +1,13 @@
 {
-  "$": "$"
+  "Apply": "Apply",
+  "Checkup package": "Checkup package",
+  "Create a new user": "Create a new user",
+  "Doctor": "Doctor",
+  "Forgot password?": "Forgot password?",
+  "Health facilities": "Health facilities",
+  "Login": "Login",
+  "Specialist": "Specialist",
+  "This field is required.": "This field is required.",
+  "invalid_email_address_format": "Invalid email address format",
+  "please_enter_your_email": "Please enter your email"
 }
