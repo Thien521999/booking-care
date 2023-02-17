@@ -1,13 +1,18 @@
 {
   "Apply": "Apply",
+  "CHĂM SÓC SỨC KHOẺ TOÀN DIỆN": "CHĂM SÓC SỨC KHOẺ TOÀN DIỆN",
   "Checkup package": "Checkup package",
   "Create a new user": "Create a new user",
   "Doctor": "Doctor",
   "Forgot password?": "Forgot password?",
   "Health facilities": "Health facilities",
   "Login": "Login",
+  "NỀN TẢNG Y TẾ": "NỀN TẢNG Y TẾ",
   "Specialist": "Specialist",
   "This field is required.": "This field is required.",
+  "Tìm bác sĩ": "Tìm bác sĩ",
+  "Tìm bệnh viện": "Tìm bệnh viện",
+  "Tìm phòng khám": "Tìm phòng khám",
   "invalid_email_address_format": "Invalid email address format",
   "please_enter_your_email": "Please enter your email"
 }

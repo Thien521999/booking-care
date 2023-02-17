@@ -1,3 +1,5 @@
+import { option } from '@models';
+
 // libs
 export function filterName(arrAll: Array<any>, arrOption: Array<any>) {
   let arr: any = [];
@@ -28,4 +30,10 @@ export const encodeCC = (dt: string, key1: string, token: string, key2: string, 
   const get6LastCharacter = token.substr(token.length - 6);
 
   return WIP_ID ? `${dt}${key1}${get6LastCharacter}${WIP_ID}${key2}` : `${dt}${key1}${get6LastCharacter}${key2}`;
+};
+
+export const getRandomText = (texts: option[]) => {
+  const randomIndex = Math.floor(Math.random() * texts.length);
+
+  return texts[randomIndex]['label'];
 };
