@@ -1,0 +1,21 @@
+.slick-arrow:before {
+  font-family: 'Glyphicons Halflings' !important;
+  font-style: normal;
+  font-weight: 400;
+  background: #fff;
+  border: 2px solid #d7d7d7;
+  padding: 10px;
+  text-align: center;
+  color: #959595 !important;
+}
+
+.slick-next {
+  right: 10px !important;
+}
+
+@media screen and (max-width: 576px) {
+  .slick-next,
+  .slick-arrow {
+    display: none !important;
+  }
+}

@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
+import Head from 'next/head';
+import { PersistGate } from 'redux-persist/integration/react';
 // components
 import { EmptyLayout } from '@components';
 // locales
@@ -16,8 +18,8 @@ import { AppPropsWithLayout } from '@models';
 import store, { persistor } from 'app/store';
 // utils
 import { createEmotionCache, theme, themeOther } from '@utils';
-import { PersistGate } from 'redux-persist/integration/react';
-import Head from 'next/head';
+// others
+import '../styles/globals.css';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -79,6 +81,18 @@ export default function App({ Component, pageProps, emotionCache = clientSideEmo
                 <link
                   rel="stylesheet"
                   type="text/css"
+                  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+                />
+                <link
+                  rel="stylesheet"
+                  type="text/css"
+                  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+                />
+
+                <link
+                  rel="stylesheet"
+                  type="text/css"
+                  // charset="UTF-8"
                   href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
                 />
                 <link

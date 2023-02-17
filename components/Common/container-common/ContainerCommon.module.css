@@ -1,10 +1,10 @@
 .containerWrapper {
-  max-width: 1180px;
+  max-width: 1130px;
   width: 100%;
   margin: auto;
 }
 
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1140px) {
   .containerWrapper {
     padding: 0 32px;
   }
