@@ -1,5 +1,4 @@
 // libs
-import { Box } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import Slider from 'react-slick';
@@ -9,7 +8,7 @@ import { ContainerCommon } from '@components';
 import { images } from '@models';
 // other
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import styles from './SliderCommon.module.css';
+import styles from './Handbook.module.css';
 
 function SampleNextArrow(props: any) {
   const { className, style, onClick } = props;
@@ -25,31 +24,32 @@ function SamplePrevArrow(props: any) {
   return <div className={className} style={{ ...style, display: 'block', zIndex: '2' }} onClick={onClick} />;
 }
 
-interface ISliderCommonProps {
+interface IHandbookProps {
   title: string;
   images: images[];
   color: string;
 }
 
-export const SliderCommon = ({title, images, color}: ISliderCommonProps) => {
-  
+export const Handbook = ({ title, images, color }: IHandbookProps) => {
   const settings = {
     className: 'center',
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 2,
     speed: 200,
     responsive: [
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 2,
           infinite: true,
         },
       },
       {
         breakpoint: 576,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
+          infinite: true,
+        //   centerPadding: '200'
         },
       },
     ],
@@ -57,25 +57,23 @@ export const SliderCommon = ({title, images, color}: ISliderCommonProps) => {
     prevArrow: <SamplePrevArrow />,
   };
   return (
-    <div className={styles.sliderCommonWrapper} style={{background: color}}>
-        <ContainerCommon>
+    <div className={styles.sliderCommonWrapper} style={{ background: color }}>
+      <ContainerCommon>
         <div className={styles.titleWrapper}>
           <div className={styles.title}>{title}</div>
-          <div className={styles.btn}>XEM THÊM</div>
+          <div className={styles.btn}>TẤT CẢ BÀI VIẾT</div>
         </div>
         <Slider {...settings}>
           {images?.map((img: any) => (
-            <div key={img.id}>
-            <Link href={img?.url} >
-              <Box>
-                <Image src={img.src} width="276" height="156" alt={`image${img.id}`} />
-              </Box>
+            <Link href={img?.url} key={img.id}>
+              <div className={styles.item}>
+                <Image src={img.src} width="232.5" height="150" alt={`image${img.id}`} />
+                <div className={styles.name}>{img.name}</div>
+              </div>
             </Link>
-            <div className={styles.name}>{img.name}</div>
-            </div>
           ))}
         </Slider>
-    </ContainerCommon>
-      </div>
+      </ContainerCommon>
+    </div>
   );
 };

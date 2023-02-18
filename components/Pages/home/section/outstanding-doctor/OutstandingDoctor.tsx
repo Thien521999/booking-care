@@ -1,15 +1,14 @@
 // libs
-import { Box } from '@mui/material';
-import Image from 'next/image';
+import Avatar from '@mui/material/Avatar';
 import Link from 'next/link';
 import Slider from 'react-slick';
 // components
 import { ContainerCommon } from '@components';
 // models
-import { images } from '@models';
+import { images2 } from '@models';
 // other
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import styles from './SliderCommon.module.css';
+import styles from './OutstandingDoctor.module.css';
 
 function SampleNextArrow(props: any) {
   const { className, style, onClick } = props;
@@ -25,14 +24,13 @@ function SamplePrevArrow(props: any) {
   return <div className={className} style={{ ...style, display: 'block', zIndex: '2' }} onClick={onClick} />;
 }
 
-interface ISliderCommonProps {
+interface IOutstandingDoctorProps {
   title: string;
-  images: images[];
+  images: images2[];
   color: string;
 }
 
-export const SliderCommon = ({title, images, color}: ISliderCommonProps) => {
-  
+export const OutstandingDoctor = ({ title, images, color }: IOutstandingDoctorProps) => {
   const settings = {
     className: 'center',
     infinite: true,
@@ -57,25 +55,24 @@ export const SliderCommon = ({title, images, color}: ISliderCommonProps) => {
     prevArrow: <SamplePrevArrow />,
   };
   return (
-    <div className={styles.sliderCommonWrapper} style={{background: color}}>
-        <ContainerCommon>
+    <div className={styles.sliderCommonWrapper} style={{ background: color }}>
+      <ContainerCommon>
         <div className={styles.titleWrapper}>
           <div className={styles.title}>{title}</div>
-          <div className={styles.btn}>XEM THÊM</div>
+          <div className={styles.btn}>Tìm kiếm</div>
         </div>
         <Slider {...settings}>
-          {images?.map((img: any) => (
-            <div key={img.id}>
-            <Link href={img?.url} >
-              <Box>
-                <Image src={img.src} width="276" height="156" alt={`image${img.id}`} />
-              </Box>
-            </Link>
-            <div className={styles.name}>{img.name}</div>
+          {images?.map((img: images2) => (
+            <div key={img.id} className={styles.item}>
+              <Link href={img?.url}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" sx={{ width: 120, height: 120 }} />
+              </Link>
+              <div className={styles.name1}>{img.name1}</div>
+              <div className={styles.name2}>{img.name2}</div>
             </div>
           ))}
         </Slider>
-    </ContainerCommon>
-      </div>
+      </ContainerCommon>
+    </div>
   );
 };

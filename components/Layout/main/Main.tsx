@@ -2,12 +2,11 @@
 import React from 'react';
 import { Box, Stack } from '@mui/material';
 // components
-// import { Header } from '@components';
+import { HeaderMain, FooterMain } from '@components';
 // models
 import { LayoutProps } from '@models';
 // others
 import styles from './Main.module.css';
-import { HeaderMain } from '@components';
 
 export const MainLayout = ({ children }: LayoutProps) => {
   return (
@@ -16,6 +15,7 @@ export const MainLayout = ({ children }: LayoutProps) => {
       <Box component="main" flexGrow={1} className={styles.main}>
         {children}
       </Box>
+      <FooterMain />
     </Stack>
   );
 };
