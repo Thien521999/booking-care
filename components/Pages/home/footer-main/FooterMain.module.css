@@ -1,0 +1,15 @@
+.footerMainWrapper {
+  padding: 10px;
+  background: #64b9e5;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text {
+  font-size: 12px;
+  color: #fff;
+}

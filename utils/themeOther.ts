@@ -174,5 +174,12 @@ export let themeOther = createTheme({
         },
       },
     },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          margin: '0 auto'
+        },
+      },
+    }
   },
 });

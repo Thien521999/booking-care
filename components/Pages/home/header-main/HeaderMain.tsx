@@ -15,9 +15,9 @@ export interface IHeaderMainProps {}
 
 export const HeaderMain = (props: IHeaderMainProps) => {
   return (
-    <Box sx={{ background: '#fff', boxShadow: '0px 1px 1px rgb(0 0 0 / 18%)' }}>
+    <div className={styles.headerMainWrapper}>
       <ContainerCommon>
-        <div className={styles.headerMainWrapper}>
+        <div className={styles.headerMainContainer}>
           <Stack direction="row" justifyContent="center">
             <Box
               display={{
@@ -40,6 +40,6 @@ export const HeaderMain = (props: IHeaderMainProps) => {
           <ChangeLanguage />
         </div>
       </ContainerCommon>
-    </Box>
+    </div>
   );
 };

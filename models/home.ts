@@ -9,3 +9,11 @@ export interface images {
   src: any;
   name: string;
 }
+
+export interface images2 {
+  id: number;
+  url: string;
+  src: any;
+  name1: string;
+  name2: string;
+}
