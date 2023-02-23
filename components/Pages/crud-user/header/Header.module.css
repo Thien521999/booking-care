@@ -1,0 +1,39 @@
+.headerWrapper {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+  width: 100%;
+  /* height: 50px; */
+  background: #599cde;
+}
+
+.contentLeft {
+  display: flex;
+  align-items: center;
+}
+.contentRight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.system {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-right: 2px solid #fff;
+  padding: 0 8px;
+  /* height: 50px; */
+
+  cursor: pointer;
+  color: #fff;
+}
+
+.intoUser,
+.locale {
+  margin: 0 16px 0 0;
+}

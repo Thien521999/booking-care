@@ -1,3 +1,11 @@
+import { controllApi } from '@api';
+import { CreateNewUser, EditUser, ModalDialog } from '@components';
+import { user } from '@models';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import { Box, Button, IconButton, Typography } from '@mui/material';
+import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -5,22 +13,12 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { useEffect, useState } from 'react';
-import { controllApi } from '@api';
-import { user } from '@models';
-import { Box, Button, IconButton, Typography } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import AddIcon from '@mui/icons-material/Add';
-import { CreateNewUser, ModalDialog, EditUser } from '@components';
-import { addListUser } from 'redux/slice/authSlice';
 import { useAppDispatch } from 'app/hooks';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { addListUser } from 'redux/slice/authSlice';
 
-
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
+export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
@@ -30,14 +28,10 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
+export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
-  // '&:last-child td, &:last-child th': {
-  //   border: 0,
-  // },
 }));
 
 export const Content = () => {
@@ -73,7 +67,7 @@ export const Content = () => {
 
     router.push(
       {
-        pathname: '/user-manage',
+        pathname: '/crud-user',
         query: {
           mode: 'create',
         },
@@ -85,12 +79,11 @@ export const Content = () => {
 
   const handleClickOpenDialogSave = (user: user) => {
     setOpenEdit(true);
-    console.log(user);
-    setUserEdit(user)
+    setUserEdit(user);
 
     router.push(
       {
-        pathname: '/user-manage',
+        pathname: '/crud-user',
         query: {
           mode: 'edit',
         },
@@ -110,7 +103,7 @@ export const Content = () => {
   const handleDeleteUser = async (id: number) => {
     try {
       await controllApi.postDeleteUser(id);
-      router.push('/user-manage');
+      router.push('/crud-user');
     } catch (error: any) {
       console.log('error', error.message);
     }

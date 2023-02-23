@@ -21,12 +21,11 @@ export const EditUser = ({ handleClose, user }: IEditUserProps) => {
   const handleSubmit = async (values: any) => {
     try {
       delete values.password;
-
       const data: any = await controllApi.postEditUser(values);
 
       if (data && data.errCode === 0) {
         handleClose();
-        router.push('/user-manage');
+        router.push('/crud-user');
       } else {
         setError(data.message);
       }

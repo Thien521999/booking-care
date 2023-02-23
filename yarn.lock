@@ -1282,9 +1282,11 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     react-hook-form: ^7.43.1
+    react-image-lightbox: ^5.1.4
     react-intl: ^6.2.8
     react-redux: ^8.0.5
     react-slick: ^0.29.0
+    react-toastify: ^9.1.1
     redux-persist: ^6.0.0
     sharp: ^0.31.3
     slick-carousel: ^1.8.1
@@ -1444,7 +1446,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^1.2.1":
+"clsx@npm:^1.1.1, clsx@npm:^1.2.1":
   version: 1.2.1
   resolution: "clsx@npm:1.2.1"
   checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
@@ -2205,6 +2207,13 @@ __metadata:
   version: 2.0.3
   resolution: "esutils@npm:2.0.3"
   checksum: 22b5b08f74737379a840b8ed2036a5fb35826c709ab000683b092d9054e5c2a82c27818f12604bfc2a9a76b90b6834ef081edbc1c7ae30d1627012e067c6ec87
+  languageName: node
+  linkType: hard
+
+"exenv@npm:^1.2.0":
+  version: 1.2.2
+  resolution: "exenv@npm:1.2.2"
+  checksum: a894f3b60ab8419e0b6eec99c690a009c8276b4c90655ccaf7d28faba2de3a6b93b3d92210f9dc5efd36058d44f04098f6bbccef99859151104bfd49939904dc
   languageName: node
   linkType: hard
 
@@ -3233,7 +3242,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -3913,7 +3922,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -3997,6 +4006,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-image-lightbox@npm:^5.1.4":
+  version: 5.1.4
+  resolution: "react-image-lightbox@npm:5.1.4"
+  dependencies:
+    prop-types: ^15.7.2
+    react-modal: ^3.11.1
+  peerDependencies:
+    react: 16.x || 17.x
+    react-dom: 16.x || 17.x
+  checksum: 59a209eba5d23301ae450413d2ce87c72c645964e8d797d55060c9261ba9043c6f8c44347ae51ed9db47fd696db13a1e05dfea33da08ef09a4e0acaa0b9065bc
+  languageName: node
+  linkType: hard
+
 "react-intl@npm:^6.2.8":
   version: 6.2.8
   resolution: "react-intl@npm:6.2.8"
@@ -4032,6 +4054,28 @@ __metadata:
   version: 18.2.0
   resolution: "react-is@npm:18.2.0"
   checksum: e72d0ba81b5922759e4aff17e0252bd29988f9642ed817f56b25a3e217e13eea8a7f2322af99a06edb779da12d5d636e9fda473d620df9a3da0df2a74141d53e
+  languageName: node
+  linkType: hard
+
+"react-lifecycles-compat@npm:^3.0.0":
+  version: 3.0.4
+  resolution: "react-lifecycles-compat@npm:3.0.4"
+  checksum: a904b0fc0a8eeb15a148c9feb7bc17cec7ef96e71188280061fc340043fd6d8ee3ff233381f0e8f95c1cf926210b2c4a31f38182c8f35ac55057e453d6df204f
+  languageName: node
+  linkType: hard
+
+"react-modal@npm:^3.11.1":
+  version: 3.16.1
+  resolution: "react-modal@npm:3.16.1"
+  dependencies:
+    exenv: ^1.2.0
+    prop-types: ^15.7.2
+    react-lifecycles-compat: ^3.0.0
+    warning: ^4.0.3
+  peerDependencies:
+    react: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18
+    react-dom: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18
+  checksum: 978936e9320fad839c039b9ee4de55d40888156cb40e093615d6fbc2ff07139d5db06f14782cb7767f780bd5fb57956778669426c535ebc0068a7a03882c7e75
   languageName: node
   linkType: hard
 
@@ -4080,6 +4124,18 @@ __metadata:
     react: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
     react-dom: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
   checksum: 67ce4981914da8a76c6efb4bc8ee7ab69e04c33bd4b3517419ab2165679a3c701dae781556149713fe2c542f84188b7ca101ea58883537be5c05756408f48c8b
+  languageName: node
+  linkType: hard
+
+"react-toastify@npm:^9.1.1":
+  version: 9.1.1
+  resolution: "react-toastify@npm:9.1.1"
+  dependencies:
+    clsx: ^1.1.1
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: 2039255539961a9b4d77b2656f120b20abe46cb0c699a7f3c0af23b4ef669d9c4d24dae6b8f4954b5efd83edf6d6e23614a29e94e9ee0d2647741fba9ba2db85
   languageName: node
   linkType: hard
 
@@ -4971,6 +5027,15 @@ __metadata:
   version: 1.1.2
   resolution: "vary@npm:1.1.2"
   checksum: ae0123222c6df65b437669d63dfa8c36cee20a504101b2fcd97b8bf76f91259c17f9f2b4d70a1e3c6bbcee7f51b28392833adb6b2770b23b01abec84e369660b
+  languageName: node
+  linkType: hard
+
+"warning@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "warning@npm:4.0.3"
+  dependencies:
+    loose-envify: ^1.0.0
+  checksum: 4f2cb6a9575e4faf71ddad9ad1ae7a00d0a75d24521c193fa464f30e6b04027bd97aa5d9546b0e13d3a150ab402eda216d59c1d0f2d6ca60124d96cd40dfa35c
   languageName: node
   linkType: hard
 

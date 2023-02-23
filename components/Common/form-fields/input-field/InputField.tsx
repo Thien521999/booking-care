@@ -1,4 +1,5 @@
 // libs
+import { TextField } from '@mui/material';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 // others
@@ -10,13 +11,33 @@ interface InputFieldProps {
   width?: string;
   placeholder?: string;
   errors?: any;
-  onclick?: (value: any) => void;
-  isDisable?: boolean;
+  disabled?: boolean;
 }
 
-export const InputField = ({ control, name, width, placeholder, errors, onclick, isDisable }: InputFieldProps) => {
+export const InputField = ({ control, name, width, placeholder, errors, disabled }: InputFieldProps) => {
   return (
     <Controller
+      name={name}
+      control={control}
+      render={({ field }) => (
+        <TextField
+          {...field}
+          helperText={errors[name]?.message}
+          placeholder={placeholder}
+          style={{ width: width }}
+          disabled={disabled}
+          inputProps={{
+            autoComplete: 'off',
+          }}
+          autoComplete="chrome-off"
+        />
+      )}
+    />
+  );
+};
+
+{
+  /* <Controller
       name={name}
       control={control}
       render={({ field }) => (
@@ -25,6 +46,5 @@ export const InputField = ({ control, name, width, placeholder, errors, onclick,
           <div className={styles.error}>{ errors && errors[name]?.message}</div>
         </div>
       )}
-    />
-  );
-};
+    /> */
+}

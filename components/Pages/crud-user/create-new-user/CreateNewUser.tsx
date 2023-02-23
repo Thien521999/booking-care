@@ -1,7 +1,9 @@
+// libs
 import { controllApi } from '@api';
 import { Box } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+// components
 import { CreateNewUserForm } from '../create-new-user-form/CreateNewUserForm';
 // other
 import styles from './CreateNewUser.module.css';
@@ -20,7 +22,7 @@ export const CreateNewUser = ({ handleClose }: ICreateNewUserProps) => {
       const data: any = await controllApi.postCreateNewlUser(values);
       if (data && data.errCode === 0) {
         handleClose();
-        router.push('/user-manage');
+        router.push('/crud-user');
       } else {
         setError(data.message);
       }
