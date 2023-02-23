@@ -1,4 +1,6 @@
 // libs
+import { useLang } from '@hooks';
+import { gender } from '@models';
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -11,7 +13,7 @@ export interface SelectFieldProps {
   name: string;
   control: Control<any>;
   disabled?: boolean;
-  options: Array<any>;
+  options: gender[];
   width: string;
   placeholder?: any;
   errors?: any;
@@ -38,6 +40,8 @@ export const SelectField = ({
   errors,
   isBorder,
 }: SelectFieldProps) => {
+  const lang = useLang();
+
   const {
     field: { value, onChange, onBlur },
     fieldState: { invalid },
@@ -47,7 +51,7 @@ export const SelectField = ({
   });
 
   const getName = useMemo(() => {
-    return options?.filter((item: any) => Number(item.id) === Number(value));
+    return options && options.filter((item: any) => String(item.key) === String(value));
   }, [options, value]);
 
   return (
@@ -61,23 +65,24 @@ export const SelectField = ({
         IconComponent={NewIcon}
         placeholder={placeholder}
         displayEmpty
-        sx={{
-          '& .MuiSelect-icon': {
-            top: 18,
-            right: 16,
-          },
-          '& .MuiOutlinedInput-notchedOutline': {
-            borderRight: isBorder ? '0px solid #C4C4C4 !important' : '1px solid #C4C4C4 !important',
-            borderLeft: isBorder ? '0px solid #C4C4C4 !important' : '1px solid #C4C4C4 !important',
-          },
-        }}
-        renderValue={(value: any) => (value ? getName && getName[0]?.name : <Placeholder>{placeholder}</Placeholder>)}
+        renderValue={(value: any) =>
+          value ? (
+            getName && lang === 'en' ? (
+              getName[0]?.valueEn
+            ) : (
+              getName[0]?.valueVi
+            )
+          ) : (
+            <Placeholder>{placeholder}</Placeholder>
+          )
+        }
       >
-        {options?.map((option: any, index: number) => (
-          <MenuItem key={index} value={Number(option?.id)}>
-            {option?.name}
-          </MenuItem>
-        ))}
+        {options &&
+          options.map((option: any, index: number) => (
+            <MenuItem key={index} value={option?.key}>
+              {lang === 'en' ? option?.valueEn : option?.valueVi}
+            </MenuItem>
+          ))}
       </Select>
       <div className={styles.error}>{errors?.district?.message}</div>
     </FormControl>

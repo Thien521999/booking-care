@@ -1,7 +1,7 @@
 // api
 import axiosClient from './axiosClient';
 // models
-import { payloadLogin, payloadNewUser } from '@models';
+import { payloadLogin, payloadNewUser, user } from '@models';
 
 export const controllApi = {
   postLogin(data: payloadLogin) {
@@ -16,13 +16,17 @@ export const controllApi = {
     const url = `/create-new-user`;
     return axiosClient.post(url, data);
   },
-  postDeleteUser(id: any) {
+  postDeleteUser(id: number) {
     const url = `/delete-user`;
     return axiosClient.delete(url, { data: { id } });
   },
-  postEditUser(inputData: any) {
+  postEditUser(inputData: user) {
     console.log('inputData', inputData);
     const url = `/edit-user`;
     return axiosClient.put(url, inputData);
+  },
+  getAllCodeUser(inputType: string) {
+    const url = `/allcode?type=${inputType}`;
+    return axiosClient.get(url);
   },
 };

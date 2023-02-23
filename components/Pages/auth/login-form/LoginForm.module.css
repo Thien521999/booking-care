@@ -32,8 +32,15 @@
 .textForget {
   display: flex;
   align-items: flex-start;
+
+  margin: 8px 0 0 0;
   width: 100%;
   cursor: pointer;
+
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 600;
+  color: #0b1d35;
 }
 
 .icons {
@@ -42,4 +49,12 @@
   grid-template-rows: 1fr;
   grid-gap: 8px;
   cursor: pointer;
+}
+
+.textOther {
+  margin: 10px 0 0 0;
+  font-size: 10px;
+  line-height: 15px;
+  color: #0b1d35;
+  opacity: 0.6;
 }

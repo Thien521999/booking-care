@@ -70,7 +70,13 @@ export const LoginForm = ({ onSubmit, error }: LoginFormProps) => {
       <Box
         sx={{ display: 'grid', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridGap: '24px', width: '100%' }}
       >
-        <InputField name="email" control={control} width="100%" placeholder={lang === 'en' ? 'Email' : '員工證'} />
+        <InputField
+          name="email"
+          errors={errors}
+          control={control}
+          width="100%"
+          placeholder={lang === 'en' ? 'Email' : '員工證'}
+        />
         <PasswordField
           name="password"
           errors={errors}
@@ -96,11 +102,7 @@ export const LoginForm = ({ onSubmit, error }: LoginFormProps) => {
       <div className={styles.textForget}>
         <FormattedMessage id={'Forgot password?'} defaultMessage={'Forgot password?'} />
       </div>
-      <div>Or Login With</div>
-      <div className={styles.icons}>
-        <GoogleIcon />
-        <FacebookIcon />
-      </div>
+      <div className={styles.textOther}>@ 2021 Booking Care All Rights Reserved</div>
     </form>
   );
 };

@@ -10,7 +10,7 @@ export const useAuthentication = () => {
 
   useEffect(() => {
     if (token) {
-      router.push('/user-manage');
+      router.push('/crud-user');
     }
   }, [token, router]);
   return <></>;

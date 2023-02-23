@@ -2,12 +2,13 @@
 import { CacheProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
-import Head from 'next/head';
 import { PersistGate } from 'redux-persist/integration/react';
+import { ToastContainer } from 'react-toastify';
 // components
 import { EmptyLayout } from '@components';
 // locales
@@ -20,6 +21,7 @@ import store, { persistor } from 'app/store';
 import { createEmotionCache, theme, themeOther } from '@utils';
 // others
 import '../styles/globals.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -29,10 +31,10 @@ export default function App({ Component, pageProps, emotionCache = clientSideEmo
 
   const [appTheme, setAppTheme] = useState(theme);
 
-  let title = 'Inchcape';
+  let title = 'Booking Care';
   switch (pathname) {
     case '/':
-      title = 'Inchcape';
+      title = 'Booking Care';
       break;
     case '/login':
       title = 'Login';
@@ -50,7 +52,7 @@ export default function App({ Component, pageProps, emotionCache = clientSideEmo
       title = 'Notification';
       break;
     default:
-      title = 'Inchcape';
+      title = 'Booking Care';
   }
 
   const messages: any = useMemo(() => {
@@ -105,6 +107,30 @@ export default function App({ Component, pageProps, emotionCache = clientSideEmo
               <ThemeProvider theme={appTheme}>
                 <CssBaseline />
                 <Component {...pageProps} />
+
+                {/* <ToastContainer
+                  position="top-right"
+                  autoClose={8000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  draggable={false}
+                  // pauseOnVisibilityChange
+                  closeOnClick
+                  pauseOnHover
+                /> */}
+
+                <ToastContainer
+                  position="top-right"
+                  autoClose={2000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light"
+                />
               </ThemeProvider>
             </Layout>
           </IntlProvider>

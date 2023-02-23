@@ -5,7 +5,7 @@ import { useUnAuthentication } from "@hooks";
 // components
 import { Header, Content } from "@components";
 
-const UserManagerPage = () => {
+const CrudUserPage = () => {
   useUnAuthentication();
   return (
     <>
@@ -15,4 +15,4 @@ const UserManagerPage = () => {
   )
 }
 
-export default UserManagerPage;
+export default CrudUserPage;

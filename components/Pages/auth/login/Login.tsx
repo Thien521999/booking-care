@@ -34,7 +34,7 @@ export const Login = () => {
         const action = addUserCurrent(data.user);
         dispatch(action);
         
-        router.push('/user-manage');
+        router.push('/crud-user');
       }
     } catch (error: any) {
       console.log('error', error);

@@ -1,29 +1,31 @@
 // libs
+import { InputField } from '@components';
 import { useLang } from '@hooks';
 import { Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-// components
-import { InputField } from '@components';
-// models
-import { user } from '@models';
 // other
-import styles from './EditUserForm.module.css';
+import { yupResolver } from '@hookform/resolvers/yup';
+import styles from './CreateNewUserForm.module.css';
 
-interface IEditUserFormProps {
+interface ICreateNewUserFormProps {
   onSubmit: (value: any) => void;
   handleClose: () => void;
   error: string;
-  user: user;
 }
 
-export const EditUserForm = ({ onSubmit, handleClose, error, user }: IEditUserFormProps) => {
+export const CreateNewUserForm = ({ onSubmit, handleClose, error }: ICreateNewUserFormProps) => {
   const lang = useLang();
 
   const schema = yup.object().shape({
+    password: yup
+      .string()
+      .required('')
+      .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/, ' ')
+      .min(8, '')
+      .max(16, ''),
     email: yup
       .string()
       .required(() => <FormattedMessage id={'please_enter_your_email'} defaultMessage={'Please enter your email'} />)
@@ -42,17 +44,17 @@ export const EditUserForm = ({ onSubmit, handleClose, error, user }: IEditUserFo
   });
 
   const {
+    reset,
     handleSubmit,
     control,
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      email: user?.email,
+      email: '',
       password: '',
-      firstName: user?.firstName,
-      lastName: user?.lastName,
-      address: user?.address,
-      id: user?.id,
+      firstName: '',
+      lastName: '',
+      address: '',
     },
     mode: 'onChange',
     resolver: yupResolver(schema),
@@ -80,7 +82,7 @@ export const EditUserForm = ({ onSubmit, handleClose, error, user }: IEditUserFo
           />
           <InputField
             name="password"
-            isDisable={true}
+            errors={errors}
             control={control}
             width="100%"
             placeholder={lang === 'en' ? 'Password' : '員工證'}
@@ -89,12 +91,14 @@ export const EditUserForm = ({ onSubmit, handleClose, error, user }: IEditUserFo
         <div className={styles.item}>
           <InputField
             name="firstName"
+            errors={errors}
             control={control}
             width="100%"
             placeholder={lang === 'en' ? 'First Name' : '員工證'}
           />
           <InputField
             name="lastName"
+            errors={errors}
             control={control}
             width="100%"
             placeholder={lang === 'en' ? 'Last Name' : '員工證'}
@@ -103,21 +107,20 @@ export const EditUserForm = ({ onSubmit, handleClose, error, user }: IEditUserFo
         <Box>
           <InputField
             name="address"
+            errors={errors}
             control={control}
             width="100%"
             placeholder={lang === 'en' ? 'Address' : '員工證'}
           />
         </Box>
-
         {error && (
           <div className={styles.showError}>
             <FormattedMessage id={error} defaultMessage={error} />
           </div>
         )}
-
         <div className={styles.groupButton}>
           <div className={styles.btn}>
-            <Button variant="outlined" size="small" color="success" disabled={!isValid} type='submit'>
+            <Button variant="outlined" size="small" color="success" disabled={!isValid} type="submit">
               Save
             </Button>
             <Button variant="outlined" size="small" color="warning" onClick={handleClose}>
