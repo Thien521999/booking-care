@@ -48,7 +48,6 @@ export const Content = () => {
       try {
         const id = 'ALL';
         const data: any = await controllApi.getAllUser(id);
-        console.log(data);
 
         if (data && data.errCode === 0) {
           setUsers(data.users);
