@@ -21,7 +21,6 @@ export const controllApi = {
     return axiosClient.delete(url, { data: { id } });
   },
   postEditUser(inputData: user) {
-    console.log('inputData', inputData);
     const url = `/edit-user`;
     return axiosClient.put(url, inputData);
   },

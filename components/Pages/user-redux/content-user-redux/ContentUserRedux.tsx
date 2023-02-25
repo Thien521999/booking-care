@@ -1,6 +1,5 @@
 // libs
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 // components
 import { ContainerCommon, TableUserRedux } from '@components';
@@ -29,8 +28,8 @@ export const ContentUserRedux = () => {
       if (isEdit) {
         await controllApi.postEditUser(values);
         toast.success('EDIT USER SUCCESS');
+        setIsEdit(false);
       } else {
-        console.log('delete');
         delete values.id;
         await controllApi.postCreateNewlUser(values);
 
@@ -90,6 +89,7 @@ export const ContentUserRedux = () => {
         error={error}
         userEdit={userEdit}
         isEdit={isEdit}
+        setIsEdit={setIsEdit}
       />
 
       <TableUserRedux handleGetInFoNeedEdit={handleGetInFoNeedEdit} />

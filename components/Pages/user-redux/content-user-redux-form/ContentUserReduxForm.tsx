@@ -5,7 +5,7 @@ import FileUploadIcon from '@mui/icons-material/FileUpload';
 import { Box, Stack } from '@mui/material';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Unstable_Grid2';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Lightbox from 'react-image-lightbox';
 import { FormattedMessage } from 'react-intl';
@@ -14,6 +14,8 @@ import * as yup from 'yup';
 import { InputField, SelectField } from '@components';
 // models
 import { gender, user } from '@models';
+// utils
+import { getBase64 } from '@utils';
 // other
 import 'react-image-lightbox/style.css';
 import styles from './ContentUserReduxForm.module.css';
@@ -26,6 +28,7 @@ interface IContentUserReduxFormProps {
   optionPosition: gender[];
   userEdit: user;
   isEdit: boolean;
+  setIsEdit: (value: boolean) => void;
 }
 
 export const ContentUserReduxForm = ({
@@ -36,11 +39,11 @@ export const ContentUserReduxForm = ({
   optionPosition,
   userEdit,
   isEdit,
+  setIsEdit,
 }: IContentUserReduxFormProps) => {
   const lang = useLang();
 
   const [previewImage, setPreviewImage] = useState('');
-  const [fileImage, setFileImage] = useState<any>('');
   const [open, setOpen] = useState(false);
 
   const schema = yup.object().shape({
@@ -67,6 +70,18 @@ export const ContentUserReduxForm = ({
       .required(() => <FormattedMessage id={'please_enter_your_email'} defaultMessage={'Please enter your email'} />),
   });
 
+  const getImage: any = useMemo(() => {
+    if (userEdit?.image) {
+      let imageBase64 = '';
+      imageBase64 = new Buffer(userEdit?.image, 'base64').toString('binary');
+      return imageBase64;
+    }
+  }, [userEdit?.image]);
+
+  useEffect(() => {
+    setPreviewImage(getImage);
+  }, [getImage]);
+
   const {
     reset,
     setValue,
@@ -85,7 +100,7 @@ export const ContentUserReduxForm = ({
       roleId: userEdit?.roleId || '',
       positionId: userEdit?.positionId || '',
       phonenumber: userEdit?.phonenumber || '',
-      // image: fileImage,
+      image: getImage,
     },
     mode: 'onChange',
     resolver: yupResolver(schema),
@@ -103,23 +118,21 @@ export const ContentUserReduxForm = ({
     setValue('gender', userEdit?.gender);
     setValue('positionId', userEdit?.positionId);
     setValue('phonenumber', userEdit?.phonenumber);
-  }, [setValue, userEdit]);
+    setValue('image', getImage);
+  }, [setValue, userEdit, getImage]);
 
-  const handleSubmitUserRedux: any = async (values: any) => {
-    if (onSubmit) {
-      await onSubmit(values);
-      reset({});
-    }
-  };
-
-  const handleOnChangeImage = (event: any) => {
+  const handleOnChangeImage = async (event: any) => {
     const data = event.target.files;
     const file = data[0];
+
+    // cach 1
     if (file) {
+      const base64 = await getBase64(file);
+
       const objectUrl = URL.createObjectURL(file);
       setPreviewImage(objectUrl);
-      setFileImage(file);
-      // setValue('image', file)
+      // update image in react-hook-form
+      setValue('image', base64);
     }
   };
 
@@ -128,6 +141,20 @@ export const ContentUserReduxForm = ({
       return;
     }
     setOpen(true);
+  };
+
+  const handleSubmitUserRedux: any = async (values: any) => {
+    if (onSubmit) {
+      await onSubmit(values);
+      reset({});
+      setPreviewImage('');
+    }
+  };
+
+  const handleClose = () => {
+    setIsEdit(false);
+    reset({});
+    setPreviewImage('');
   };
 
   return (
@@ -287,12 +314,7 @@ export const ContentUserReduxForm = ({
               </Button>
             )}
 
-            <Button
-              variant="outlined"
-              size="small"
-              color="warning"
-              // onClick={handleClose}
-            >
+            <Button variant="outlined" size="small" color="warning" onClick={handleClose}>
               Close
             </Button>
           </div>
